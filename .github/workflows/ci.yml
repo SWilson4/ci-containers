@@ -33,9 +33,9 @@ jobs:
     strategy:
       matrix:
         distro:
-          - ubuntu-focal
-          - ubuntu-jammy
-          - ubuntu-noble
+          - focal
+          - jammy
+          - noble
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -47,7 +47,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push x86_64 tag
         run: pwd && echo "Hello, world!"
-        working-directory: ${{ matrix.distro }}
+        working-directory: ubuntu-${{ matrix.distro }}
         #uses: docker/build-push-action@v6
         #with:
         #push: true
