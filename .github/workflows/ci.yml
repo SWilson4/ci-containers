@@ -14,7 +14,7 @@ jobs:
     runs-on: oqs-arm64
     steps:
       - name: Checkout code
-        uses: checkout@v4
+        uses: actions/checkout@v4
       - name: Login
         uses: docker/login-action@v3
         with:
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: checkout@v4
+        uses: actions/checkout@v4
       - name: Login
         uses: docker/login-action@v3
         with:
