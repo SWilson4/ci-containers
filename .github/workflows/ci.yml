@@ -45,17 +45,16 @@ jobs:
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push x86_64 tag
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          build-args: ARCH=x86_64
-          tags: swilson4/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
-          context: ubuntu-${{ matrix.distro }}
-        #tags: openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
-        #- name: Combine images
-        #run: |
-          #docker manifest create openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest \
-          #--amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64 \
-          #--amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-arm64 \
-          #&& docker manifest push openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest
+            #- name: Build and push x86_64 tag
+            #uses: docker/build-push-action@v6
+            #with:
+            #push: true
+            #build-args: ARCH=x86_64
+            #tags: swilson4/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
+            #context: ubuntu-${{ matrix.distro }}
+      - name: Combine images
+        run: |
+          docker manifest create swilson4/ci-ubuntu-${{ matrix.distro }}:latest \
+            --amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64 \
+            --amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-arm64 \
+            && docker manifest push swilson4/ci-ubuntu-${{ matrix.distro }}:latest
