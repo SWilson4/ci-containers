@@ -34,8 +34,8 @@ jobs:
       matrix:
         distro:
           - focal
-          - jammy
-          - noble
+            #- jammy
+            #- noble
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -46,11 +46,11 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push x86_64 tag
-        run: pwd && echo "Hello, world!"
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: swilson4/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
         working-directory: ubuntu-${{ matrix.distro }}
-        #uses: docker/build-push-action@v6
-        #with:
-        #push: true
         #tags: openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
         #- name: Combine images
         #run: |
