@@ -49,8 +49,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          build-args:
-            - ARCH: x86_64
+          build-args: ARCH=x86_64
           tags: swilson4/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
           context: ubuntu-${{ matrix.distro }}
         #tags: openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
