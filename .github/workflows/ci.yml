@@ -55,6 +55,6 @@ jobs:
       - name: Combine images
         run: |
           docker manifest create swilson4/ci-ubuntu-${{ matrix.distro }}:latest \
-            --amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64 \
-            --amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-arm64 \
-            #&& docker manifest push swilson4/ci-ubuntu-${{ matrix.distro }}:latest
+            --amend swilson4/ci-ubuntu-${{ matrix.distro }}:latest-x86_64 \
+            --amend swilson4/ci-ubuntu-${{ matrix.distro }}:latest-arm64 \
+            && docker manifest push swilson4/ci-ubuntu-${{ matrix.distro }}:latest
