@@ -46,14 +46,15 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ vars.DOCKERHUB_TOKEN }}
       - name: Build and push x86_64 tag
-        working-directory: ubuntu-${{ matrix.distro }}
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          tags: openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
-      - name: Combine images
+        run: echo "Hello, world!"
+        #working-directory: ubuntu-${{ matrix.distro }}
+        #uses: docker/build-push-action@v6
+        #with:
+        #push: true
+        #tags: openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
+        #- name: Combine images
         run: |
-          docker manifest create openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest \
-            --amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64 \
-            --amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-arm64 \
-            && docker manifest push openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest
+          #docker manifest create openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest \
+          #--amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64 \
+          #--amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-arm64 \
+          #&& docker manifest push openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest
