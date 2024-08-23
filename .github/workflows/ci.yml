@@ -4,32 +4,32 @@ on:
   push:
 
 jobs:
-  ubuntu-arm64:
-    strategy:
-      matrix:
-        distro:
-          - focal
-          - jammy
-          - noble
-    runs-on: oqs-arm64
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Login
-        uses: docker/login-action@v3
-        with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push arm64 tag
-        #working-directory: ubuntu-${{ matrix.distro }}
-        run: echo "Hello, world!"
-          #uses: docker/build-push-action@v6
-          #with:
-          #push: true
-          #tags: openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-arm64
+  #  ubuntu-arm64:
+  #    strategy:
+  #      matrix:
+  #        distro:
+  #          - focal
+  #          - jammy
+  #          - noble
+  #    runs-on: oqs-arm64
+  #    steps:
+  #      - name: Checkout code
+  #        uses: actions/checkout@v4
+  #      - name: Login
+  #        uses: docker/login-action@v3
+  #        with:
+  #          username: ${{ vars.DOCKERHUB_USERNAME }}
+  #          password: ${{ secrets.DOCKERHUB_TOKEN }}
+  #      - name: Build and push arm64 tag
+  #        #working-directory: ubuntu-${{ matrix.distro }}
+  #        run: echo "Hello, world!"
+  #          #uses: docker/build-push-action@v6
+  #          #with:
+  #          #push: true
+  #          #tags: openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-arm64
 
   ubuntu-x86_64:
-    needs: ubuntu-arm64
+    #needs: ubuntu-arm64
     strategy:
       matrix:
         distro:
