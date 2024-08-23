@@ -44,7 +44,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ vars.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push x86_64 tag
         run: echo "Hello, world!"
         #working-directory: ubuntu-${{ matrix.distro }}
