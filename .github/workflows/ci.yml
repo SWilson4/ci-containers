@@ -53,7 +53,7 @@ jobs:
         #push: true
         #tags: openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64
         #- name: Combine images
-        run: |
+        #run: |
           #docker manifest create openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest \
           #--amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-x86_64 \
           #--amend openquantumsafe/ci-ubuntu-${{ matrix.distro }}:latest-arm64 \
